@@ -51,6 +51,10 @@ $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
     font-weight: 500;
 }
 
+.reveal .left {
+    text-align: left;
+}
+
 .reveal strong {
     color: $headingColor;
     font-weight: 500;
