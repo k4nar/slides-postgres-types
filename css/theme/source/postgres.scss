@@ -1,0 +1,58 @@
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:200,500);
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Open Sans', Helvetica, sans-serif;
+$mainColor: #fff;
+$headingFont: 'Montserrat', Helvetica, sans-serif;
+$headingColor: #ffd343;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #336791;
+$linkColor: #ffd343;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+.reveal h1 {
+    color: $mainColor;
+    font-size: 2em;
+}
+
+.reveal h2 {
+    font-size: 1.5em;
+    position: fixed;
+    width: 100%;
+    top: 10%;
+}
+
+.reveal {
+    font-weight: 200;
+}
+
+.reveal .footer {
+    position: fixed;
+    bottom: 5%;
+    margin: auto;
+    width: 100%;
+    font-size: 0.7em;
+    color: $headingColor;
+    font-weight: 500;
+}
+
+.reveal strong {
+    color: $headingColor;
+    font-weight: 500;
+}
+
