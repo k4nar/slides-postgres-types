@@ -55,6 +55,13 @@ $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
     text-align: left;
 }
 
+.reveal section img {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: auto
+}
+
 .reveal strong {
     color: $headingColor;
     font-weight: 500;

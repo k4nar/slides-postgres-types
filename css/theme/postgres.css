@@ -280,6 +280,12 @@ body {
 .reveal .left {
   text-align: left; }
 
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin: auto; }
+
 .reveal strong {
   color: #ffd343;
   font-weight: 500; }

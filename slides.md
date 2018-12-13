@@ -95,3 +95,10 @@ v
 ## Conclusion
 
 « Ce n'est pas sale, ton SQL change. »
+
+
+---
+
+![Mastering Postgresql](https://masteringpostgresql.com/img/MasteringPostgreSQLinAppDev-Cover.png)
+
+[https://masteringpostgresql.com/](https://masteringpostgresql.com/)
