@@ -82,13 +82,88 @@ v
 ---
 
 ## Les Arrays
-<!-- eg: labels pour des livres -->
+
+<div class="left" >
+**Utilisation:** Dénormaliser des valeurs simples.
+
+**Avantages:** Peut éviter des JOIN et réduire la taille de la base
+</div>
+
+v
+
+## Les Arrays
+
+<div class="left" >
+**Utilisation:** Retourner des valeurs agrégées dans un tableau
+
+**Avantages:** Peut éviter le besoin de fusionner des résultats de many-to-many à la main
+</div>
+
+v
+
+## Les Arrays
+
+```sql
+> SELECT books.title,
+         (SELECT array_agg(authors.name)
+            FROM authors
+            JOIN books_authors
+              ON book_id = books.id
+                 AND author_id = authors.id
+         ) AS authors
+    FROM books;
++------------+---------------------------------------------------------+
+| title      | authors                                                 |
+|------------+---------------------------------------------------------|
+| Golem      | ['Elvire Murail', 'Lorris Murail', 'Marie-Aude Murail'] |
+| Good Omens | ['Terry Pratchett', 'Neil Gaiman']                      |
++------------+---------------------------------------------------------+
+```
 
 ---
 
-## Le objets JSON
-<!-- eg: metadata sur les livres -->
-<!-- eg: retourner les livres dans une API -->
+## Le JSON
+
+<div class="left" >
+**Utilisation:** Stocker des valeurs en mode "schema-less" dans une colonne
+
+**Avantages:** Évite de tout passer à MongoDB :)
+</div>
+
+v
+
+## Le JSON
+
+<div class="left" >
+**Utilisation:** Retourner directement le résulat d'un appel à une API REST
+
+**Avantages:** Beaucoup, beaucoup plus rapide tout en restant simple
+</div>
+
+v
+
+## Le JSON
+
+
+```sql
+> WITH result AS (
+      SELECT books.title,
+             (SELECT array_agg(authors.name)
+                FROM authors
+                JOIN books_authors
+                  ON book_id = books.id
+                     AND author_id = authors.id
+             ) AS authors
+        FROM books
+   )
+   SELECT json_agg(result)::text FROM result;
++--------------------------------------------------------------------------------------+
+| json_agg                                                                             |
+|--------------------------------------------------------------------------------------|
+| [{"title":"Golem","authors":["Elvire Murail","Lorris Murail","Marie-Aude Murail"]},  |
+|  {"title":"Good Omens","authors":["Terry Pratchett","Neil Gaiman"]}]                 |
++--------------------------------------------------------------------------------------+
+```
 
 ---
 
